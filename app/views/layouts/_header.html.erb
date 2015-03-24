@@ -5,8 +5,30 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
-        <li><%= link_to "All users", users_path %></li>
         <% if user_signed_in? %>
+          <% if current_user.role == "admin" %>
+            <li class="dropdown">
+              <a href= "#" class="dropdown-toggle" data-toggle="dropdown">
+                Admin space<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Users manager", admin_users_path %></li>
+                <li>
+                  <%= link_to "Add users", new_admin_user_path %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Places manager", "#" %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Reviews manager", "#" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "All users", users_path %></li>
+          <% end %>
           <li class="dropdown">
             <a href= "#" class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.email %><b class="caret"></b>
