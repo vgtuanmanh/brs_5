@@ -1,6 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row">
   <h1>
+    <%= image_tag(@user.avatar.url(:thumb)) %>
     <%= @user.name %>
   </h1>
 </div>
@@ -8,6 +9,24 @@
 <div>
   <h3>
     User name: <strong><%= @user.name %></strong>
+    <br>
+    Gender:
+    <strong>
+      <% if @user.is_female %>
+        Female
+      <% else %>
+        Male
+      <% end %>
+    </strong>
+    <br>
+    Date of birth:
+    <strong>
+      <% unless @user.date_of_birth.nil? %>
+        <%= @user.date_of_birth.strftime('%d/%m/%Y') %>
+      <% else %>
+        Not updated yet!
+      <% end %>
+    </strong>
     <br>
     User email: <strong><%= @user.email %></strong>
   </h3>

@@ -4,6 +4,7 @@
 <div>
   <table class="table">
     <thead>
+      <th>Avatar</th>
       <th>User name</th>
       <th>User email</th>
       <th colspan="4"></th>
@@ -11,6 +12,11 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
+          <th>
+            <li class="round-image-50">
+              <%= image_tag(user.avatar.url(:thumb)) %>
+            </li>
+          </th>
           <th><%= link_to user.name, user %></th>
           <th><%= user.email %></th>
           <th>
