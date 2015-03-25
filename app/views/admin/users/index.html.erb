@@ -1,0 +1,44 @@
+<% provide(:title, 'Users Manage') %>
+<h1>All users</h1>
+<%= will_paginate %>
+
+<div>
+  <%= link_to "Add a new user", new_admin_user_path,
+                              class: "btn btn-primary" %>
+</div>
+
+<div>
+  <table class="table">
+    <thead>
+      <th>User name</th>
+      <th>User email</th>
+      <th colspan="4"></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th><%= link_to user.name, admin_user_path(user) %></th>
+          <th><%= user.email %></th>
+          <th>
+            <%= link_to "Edit Profile", edit_admin_user_path(user),
+                                      class: "btn btn-primary" %>
+          </th>
+          <th>
+            <%= link_to "All reviews", "#",
+                                      class: "btn btn-primary" %>
+          </th>
+          <th>
+            <%= link_to "Place requests", "#",
+                                      class: "btn btn-primary" %>
+          </th>
+          <th>
+            <%= link_to "Delete", admin_user_path(user),
+                class: "btn btn-danger",
+                method: :delete, data: {confirm: "ARE YOU SURE?"} %>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div>
+<%= will_paginate %>

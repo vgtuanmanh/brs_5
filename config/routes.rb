@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
 
   resources :users
+  namespace :admin do
+    root 'users#index'
 
+    resources :users
+  end
 end
