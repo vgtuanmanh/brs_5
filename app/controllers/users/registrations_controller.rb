@@ -25,11 +25,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:sign_up) << [:name, :is_female,
+                                                  :avatar, :date_of_birth]
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << [:name, :is_female,
+                                                      :avatar, :date_of_birth]
   end
 
   def after_sign_up_path_for(resource)
