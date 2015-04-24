@@ -1,0 +1,44 @@
+<% provide(:title, 'Categories Manage') %>
+<h1>All categories</h1>
+<%= will_paginate %>
+
+<div>
+  <%= link_to "Add a new category", new_admin_category_path,
+                              class: "btn btn-primary" %>
+</div>
+<br>
+<div>
+  <table class="table">
+    <thead>
+      <th>Category avatar</th>
+      <th>Category name</th>
+      <th colspan="5"></th>
+    </thead>
+    <tbody>
+      <% @categories.each do |c| %>
+        <tr>
+          <th>
+            <li class="round-image-50">
+              <%= image_tag(c.avatar.url(:thumb)) %>
+            </li>
+          </th>
+          <th><%= link_to c.name, admin_category_path(c) %></th>
+          <th>
+            <%= link_to "Edit Category", edit_admin_category_path(c),
+                                      class: "btn btn-primary" %>
+          </th>
+          <th>
+            <%= link_to "All places", "#",
+                                      class: "btn btn-primary" %>
+          </th>
+          <th>
+            <%= link_to "Delete", admin_category_path(c),
+                class: "btn btn-danger",
+                method: :delete, data: {confirm: "ARE YOU SURE?"} %>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div>
+<%= will_paginate %>

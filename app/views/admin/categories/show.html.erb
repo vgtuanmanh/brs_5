@@ -1,0 +1,27 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+  <h1>
+    <%= image_tag(@category.avatar.url(:thumb)) %>
+    <%= @category.name %>
+  </h1>
+</div>
+<br>
+<div>
+  <h3>
+    Category name: <strong><%= @category.name %></strong>
+    <br>
+    Description: <%= @category.description %>
+    <br>Picture:<br>
+    <%= image_tag(@category.avatar.url(:medium)) %>
+  </h3>
+</div>
+<br>
+<div>
+  <%= link_to "Back", admin_categories_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_admin_category_path(@category),
+                              class: "btn btn-default" %>
+  <%= link_to "All place", "#",
+                            class: "btn btn-default" %>
+  <%= link_to "Delete", admin_category_path(@category), class: "btn btn-danger",
+      method: :delete, data: {confirm: "ARE YOU SURE?"} %>
+</div>

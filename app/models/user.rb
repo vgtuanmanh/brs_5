@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     styles: {medium: "400x400>", thumb: "100x100>"},
-    default_url: "/images/:style/missing_user.png"
+    default_url: "/images/user/:style/missing_user.png"
 
   ROLES = %w{admin user}
   # Include default devise modules. Others available are:

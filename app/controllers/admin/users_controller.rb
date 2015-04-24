@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_admin
+  before_action :admin_user
 
   def index
     @users = User.paginate page: params[:page]
@@ -46,13 +46,6 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def is_admin
-    unless current_user.role == "admin"
-      flash[:danger] = "You not be an admin!"
-      redirect_to root_path
-    end
-  end
-
   def user_params
     params.require(:user).permit(:name, :email, :avatar,
       :password, :password_confirmation, :date_of_birth, :is_female)

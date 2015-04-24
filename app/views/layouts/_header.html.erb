@@ -18,6 +18,10 @@
                 </li>
                 <li class="divider"></li>
                 <li>
+                  <%= link_to "Categories manager", admin_categories_path %>
+                </li>
+                <li class="divider"></li>
+                <li>
                   <%= link_to "Places manager", "#" %>
                 </li>
                 <li class="divider"></li>
@@ -40,7 +44,8 @@
               </li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", destroy_user_session_path, method: "delete" %>
+                <%= link_to "Log out", destroy_user_session_path,
+                                        method: "delete" %>
               </li>
             </ul>
           </li>
